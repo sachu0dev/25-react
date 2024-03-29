@@ -25,7 +25,7 @@ const Accordian = () => {
   }
 
   return (
-    <div className="wrapper flex flex-col mt-[20vh] items-center h-full">
+    <div className="wrapper flex flex-col pt-[20vh] items-center h-full border-b-4 border-gray-300">
       <button
         onClick={() => setEnableMultiSelection(!enableMultiSelection)}
         className="mb-4 bg-red-500 p-2 rounded-md text-white font-bold"
