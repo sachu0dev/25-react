@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const RandomColor = () => {
   const [typeOfColor, setTypeOfColor] = useState("hex");
@@ -26,6 +26,10 @@ const RandomColor = () => {
     setColor(`rgb(${r},${g},${b})`);
   }
 
+  useEffect(() => {
+    if (typeOfColor === "rgb") handleCreateRandomRgbColor();
+    else handleCreateRandomHexColor();
+  }, [typeOfColor]);
   return (
     <div
       className="h-full  w-full  flex justify-center items-center flex-col"
@@ -34,7 +38,7 @@ const RandomColor = () => {
       }}
     >
       <h1 className="text-white text-[5rem] mb-10 py-2 px-12 bg-black">
-        Genrated Color : {color}
+        {typeOfColor === "rgb" ? "RGB Color : " : "HEX Color : "} {color}
       </h1>
       <div>
         <button
