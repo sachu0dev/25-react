@@ -13,7 +13,7 @@ const StarRating = ({ noOfStars = 7 }) => {
     setHover(index);
   }
 
-  function handleLeave(index) {
+  function handleLeave() {
     setHover(rating);
   }
 
@@ -28,7 +28,7 @@ const StarRating = ({ noOfStars = 7 }) => {
               key={index}
               onClick={() => handleClick(index)}
               onMouseMove={() => handleMove(index)}
-              onMouseLeave={() => handleLeave(index)}
+              onMouseLeave={handleLeave}
               size={40}
             />
           );
