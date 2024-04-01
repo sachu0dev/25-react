@@ -5,11 +5,11 @@ const ImageSlider = ({ url, limit }) => {
   const [images, setImages] = useState([]);
   const [currantSlide, setCurrantSlide] = useState(0);
   const [errorMsg, setErrorMsg] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   async function fetchImages(geturl) {
     try {
-      setCurrantSlide(true);
+      setLoading(true);
       const response = await fetch(`${url}?page=1&limit=${limit}`);
       const data = await response.json();
       if (data) {
@@ -91,7 +91,9 @@ const ImageSlider = ({ url, limit }) => {
                         ? "bg-white h-3 w-3 rounded-full mx-2"
                         : "bg-black h-3 w-3 rounded-full mx-2"
                     }
-                    onClick={() => setCurrantSlide(index)}
+                    onClick={() => {
+                      setCurrantSlide(index);
+                    }}
                   ></button>
                 );
               })
