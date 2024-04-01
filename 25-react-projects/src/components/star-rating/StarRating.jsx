@@ -10,6 +10,7 @@ const StarRating = ({ noOfStars = 7 }) => {
   }
 
   function handleMove(index) {
+    console.log(index);
     setHover(index);
   }
 
