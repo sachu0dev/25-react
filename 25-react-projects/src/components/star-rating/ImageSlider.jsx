@@ -10,7 +10,7 @@ const ImageSlider = ({ url, limit }) => {
   async function fetchImages(geturl) {
     try {
       setLoading(true);
-      const response = await fetch(`${url}?page=1&limit=${limit}`);
+      const response = await fetch(`${geturl}?page=1&limit=${limit}`);
       const data = await response.json();
       if (data) {
         setImages(data);
@@ -60,20 +60,20 @@ const ImageSlider = ({ url, limit }) => {
         />
         {images && images.length
           ? images.map((image, index) => {
-              return (
-                <img
-                  key={image.id}
-                  src={image.download_url}
-                  alt={image.download_url}
-                  // className="w-full h-full shadow-black shadow-md rounded-md object-cover"
-                  className={
-                    currantSlide === index
-                      ? "w-full h-full shadow-black shadow-md rounded-md object-cover"
-                      : "hidden"
-                  }
-                />
-              );
-            })
+            return (
+              <img
+                key={image.id}
+                src={image.download_url}
+                alt={image.download_url}
+                // className="w-full h-full shadow-black shadow-md rounded-md object-cover"
+                className={
+                  currantSlide === index
+                    ? "w-full h-full shadow-black shadow-md rounded-md object-cover"
+                    : "hidden"
+                }
+              />
+            );
+          })
           : null}
         <BsArrowRightCircleFill
           className="absolute right-8 text-3xl text-white shadow-black shadow-lg"
@@ -82,21 +82,21 @@ const ImageSlider = ({ url, limit }) => {
         <span className="flex absolute bottom-8">
           {images && images.length
             ? images.map((_, index) => {
-                return (
-                  <button
-                    key={index}
-                    // className="bg-white h-3 w-3 rounded-full mx-2"
-                    className={
-                      currantSlide === index
-                        ? "bg-white h-3 w-3 rounded-full mx-2"
-                        : "bg-black h-3 w-3 rounded-full mx-2"
-                    }
-                    onClick={() => {
-                      setCurrantSlide(index);
-                    }}
-                  ></button>
-                );
-              })
+              return (
+                <button
+                  key={index}
+                  // className="bg-white h-3 w-3 rounded-full mx-2"
+                  className={
+                    currantSlide === index
+                      ? "bg-white h-3 w-3 rounded-full mx-2"
+                      : "bg-black h-3 w-3 rounded-full mx-2"
+                  }
+                  onClick={() => {
+                    setCurrantSlide(index);
+                  }}
+                ></button>
+              );
+            })
             : null}
         </span>
       </div>
